@@ -29,11 +29,12 @@ const FeaturesSection = () => {
     <section id="features" className="py-24 bg-white px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-brandBlack tracking-tight">
+
+        <div className="flex lg:items-center justify-center flex-col mb-16">
+          <h2 className="text-xl md:text-4xl font-bold text-brandBlack ">
             Why Choose SafeGuard?
           </h2>
-          <p className="text-gray-500 mt-4 text-lg">
+          <p className="text-gray-500 mt-2 lg:w-66 lg:text-center text-md">
             Smart technology designed for your family's comfort.
           </p>
         </div>

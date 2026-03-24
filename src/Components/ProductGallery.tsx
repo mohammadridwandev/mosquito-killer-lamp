@@ -23,11 +23,11 @@ const ProductGallery = () => {
   return (
     <section className="lg:py-16 bg-softGray px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col items-center mb-12 text-center">
-          <h2 className="text-4xl font-bold text-brandBlack">
+        <div className="flex lg:items-center justify-center flex-col mb-16">
+          <h2 className="text-xl md:text-4xl font-bold text-brandBlack ">
             See it in Action
           </h2>
-          <p className="text-gray-500 mt-4 max-w-lg">
+          <p className="text-gray-500 mt-2 lg:w-96 lg:text-center text-md">
             Sleek, portable, and designed to blend perfectly with your modern
             interior.
           </p>

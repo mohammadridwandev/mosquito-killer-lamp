@@ -39,14 +39,15 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-24 bg-white px-4">
+    <section className="lg:py-24 py-10 bg-slate-100 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-brandBlack tracking-tight">
+
+        <div className="flex lg:items-center justify-center flex-col mb-16">
+          <h2 className="text-xl md:text-4xl font-bold text-brandBlack ">
             Common Questions
           </h2>
-          <p className="text-gray-500 mt-4">
+          <p className="text-gray-500 mt-2 lg:w-96 lg:text-center text-md">
             Everything you need to know about the SafeGuard Mosquito Lamp.
           </p>
         </div>
@@ -56,10 +57,10 @@ const FAQSection = () => {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`border rounded-3xl transition-all duration-300 ${
+              className={`border border-gray-200 rounded-xl transition-all duration-300 ${
                 openIndex === index
                   ? "border-brandBlack bg-softGray"
-                  : "border-gray-100 bg-white"
+                  : "border-gray-200 bg-white"
               }`}
             >
               <button
@@ -81,7 +82,7 @@ const FAQSection = () => {
                     : "max-h-0 opacity-0"
                 }`}
               >
-                <p className="px-6 pb-6 text-gray-500 leading-relaxed">
+                <p className="px-6 pb-6 text-gray-700 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>

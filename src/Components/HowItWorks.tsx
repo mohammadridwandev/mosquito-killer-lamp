@@ -52,11 +52,11 @@ const HowItWorks = () => {
 
           {/* Right Side: Steps Content */}
           <div className="flex flex-col gap-10">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-brandBlack leading-tight">
+            <div className="flex  justify-center flex-col">
+              <h2 className="text-2xl md:text-4xl font-bold text-brandBlack ">
                 Smart technology, <br /> simple results.
               </h2>
-              <p className="text-gray-500 mt-4">
+              <p className="text-gray-500 mt-2 lg:w-66  text-md">
                 No complex setup. Just plug in the USB and enjoy a mosquito-free
                 zone.
               </p>

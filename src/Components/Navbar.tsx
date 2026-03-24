@@ -18,7 +18,8 @@ const HeroSection = () => {
   return (
     <section className="flex flex-col items-center bg-linear-to-b from-[#D9D9FF] to-[#F8F3F9] px-4 py-4 min-h-screen">
       {/* --- NAVIGATION --- */}
-      <nav className="flex items-center justify-between bg-white/60 border-white rounded-full px-7 md:px-3 py-2.5 w-full max-w-5xl backdrop-blur-md">
+
+      <nav className="flex   items-center justify-between bg-white/60  rounded-full px-7 md:px-3 py-2.5 w-full max-w-5xl backdrop-blur-md">
         <a href="#home" className="lg:ps-2 font-bold text-xl">
           SafeGuard<span className="text-brandBlack">.</span>
         </a>
@@ -26,7 +27,7 @@ const HeroSection = () => {
         {/* Desktop & Mobile Menu */}
         <div
           id="menu"
-          className={`max-md:absolute max-md:bg-white/90 justify-center max-md:h-screen max-md:overflow-hidden max-md:transition-[width] max-md:duration-300 max-md:top-0 max-md:left-0 max-md:flex-col flex items-center gap-8 z-50 md:gap-10 flex-1 ${
+          className={`max-md:absolute max-md:bg-slate-100/96 lg:justify-center max-md:h-screen max-md:overflow-hidden max-md:transition-[width] max-md:duration-300 max-md:top-0 max-md:left-0 max-md:flex-col flex items-center lg:pt-0 pt-20 gap-5 z-50 md:gap-10 flex-1 ${
             mobileOpen ? "max-md:w-full" : "max-md:w-0"
           }`}
         >
@@ -35,7 +36,7 @@ const HeroSection = () => {
               key={link.id}
               href={`#${link.id}`}
               onClick={() => setMobileOpen(false)}
-              className="text-gray-600 hover:text-gray-800 text-sm font-medium transition-colors"
+              className="text-gray-900  hover:text-gray-800 text-sm font-medium transition-colors"
             >
               {link.name}
             </a>
@@ -43,7 +44,7 @@ const HeroSection = () => {
 
           <button
             onClick={() => setMobileOpen(false)}
-            className="md:hidden bg-brandBlack text-white p-3 rounded-full shadow-lg"
+            className="md:hidden bg-brandBlack cursor-pointer text-white p-3 rounded-full shadow-lg"
           >
             <FiX size={24} />
           </button>
@@ -56,7 +57,7 @@ const HeroSection = () => {
 
           <button
             onClick={() => setMobileOpen(true)}
-            className="md:hidden text-gray-700 p-2"
+            className="md:hidden text-gray-700 cursor-pointer p-2"
           >
             <FiMenu size={28} />
           </button>
