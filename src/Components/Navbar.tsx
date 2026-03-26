@@ -16,12 +16,27 @@ const HeroSection = () => {
     { name: "Support", id: "support" },
   ];
 
+  // Updated: Prevent default anchor jump and perform smooth programmatic scrolling.
+  const handleScroll = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        // Updated here: changed from "auto" to "smooth" to avoid instant jump.
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section className="flex flex-col items-center bg-linear-to-b from-[#D9D9FF] to-[#F8F3F9] px-4 py-4 min-h-screen">
       {/* --- NAVIGATION --- */}
-
-      <nav className="flex   items-center justify-between bg-white/60  rounded-full px-7 md:px-3 py-2.5 w-full max-w-5xl backdrop-blur-md">
-        <a href="#home" className="lg:ps-2 font-bold text-xl">
+      <nav className="flex items-center justify-between bg-white/60 rounded-full px-7 md:px-3 py-2.5 w-full max-w-5xl backdrop-blur-md">
+        <a
+          href="#home"
+          onClick={(e) => handleScroll(e, "home")}
+          className="lg:ps-2 font-bold text-xl"
+        >
           SafeGuard<span className="text-brandBlack">.</span>
         </a>
 
@@ -36,8 +51,12 @@ const HeroSection = () => {
             <a
               key={link.id}
               href={`#${link.id}`}
-              onClick={() => setMobileOpen(false)}
-              className="text-gray-900  hover:text-gray-800 text-sm font-medium transition-colors"
+              onClick={(e) => {
+                // Updated: keep using custom handler so every nav click scrolls smoothly.
+                handleScroll(e, link.id);
+                setMobileOpen(false);
+              }}
+              className="text-gray-900 hover:text-gray-800 text-sm font-medium transition-colors"
             >
               {link.name}
             </a>
@@ -68,14 +87,13 @@ const HeroSection = () => {
       {/* --- HERO CONTENT --- */}
       <div id="home" className="flex flex-col py-10">
         <div className="flex items-center justify-center flex-col text-center">
-          <h1 className="text-3xl md:text-[66px] max-w-4xl mt-8 text-gray-900 leading-[1.1] font-bold tracking-tight">
-            Protect Your Home from <br className="hidden md:block" />
-            Mosquitoes Silently.
+          <h1 className="text-2xl lg:text-6xl lg:max-w-4xl mt-8 text-gray-900 leading-[1.1] font-bold tracking-tight">
+            Say Goodbye to Sleepless Nights and Harmful Coils
           </h1>
 
           <p className="text-base md:text-lg text-gray-500 max-w-[600px] mt-6 leading-relaxed">
-            Experience peaceful nights with our advanced UV-Trap technology. No
-            chemicals, no noise—just pure protection for your family.
+            Protect your family with SafeGuard’s 360° UV-Trap technology. 100%
+            chemical-free, noise-free, and safe for babies
           </p>
 
           <div className="flex gap-4 mt-8">

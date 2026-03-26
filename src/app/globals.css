@@ -11,6 +11,10 @@ html {
 }
 
 
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
 
 @theme inline {
 
