@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Mosquito Killer Lamp",
   description: "A website for a mosquito killer lamp product.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

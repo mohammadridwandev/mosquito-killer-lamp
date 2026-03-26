@@ -11,7 +11,8 @@ const HeroSection = () => {
   const navLinks = [
     { name: "Home", id: "home" },
     { name: "Features", id: "features" },
-    { name: "How it Works", id: "howitworks" },
+    { name: "How it Works", id: "howItWorks" },
+    { name: "Gallery", id: "gallery" },
     { name: "Support", id: "support" },
   ];
 
@@ -86,7 +87,7 @@ const HeroSection = () => {
 
         <div className="flex items-center justify-center">
           <Image
-            src="/hero-seciton-image/image01.png"
+            src="/hero-section-image/image (2).png"
             alt="Mosquito Killer Lamp"
             width={650}
             height={500}

@@ -34,11 +34,11 @@ const HowItWorks = () => {
           <div className="relative">
             <div className="bg-white p-4 rounded-xl border border-gray-200  ">
               <Image
-                src="/hero-seciton-image/image 03.png" // আপনার আপলোড করা ইমেজ অনুযায়ী পাথ চেঞ্জ করতে পারেন
+                src="/hero-section-image/image (3).png"
                 alt="Technology Detail"
                 width={600}
                 height={600}
-                className="rounded-[2rem] object-cover"
+                className="rounded-4xl object-cover"
               />
             </div>
             {/* Floating Badge */}

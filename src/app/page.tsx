@@ -1,9 +1,7 @@
 import FeaturesSection from "@/Components/FeaturesSection";
 import HowItWorks from "@/Components/HowItWorks";
-import ProductGallery from "@/Components/ProductGallery";
 import FAQSection from "@/Components/FAQSection";
-import Footer from "@/Components/Footer";
-import HeroSection from "@/Components/Navbar";
+import Gallery from "@/Components/Gallery";
 
 export default function Home() {
   return (
@@ -12,11 +10,13 @@ export default function Home() {
         <FeaturesSection />
       </div>
 
-      <div id="howitworks">
+      <div id="howItWorks">
         <HowItWorks />
       </div>
 
-      <ProductGallery />
+      <div id="gallery">
+        <Gallery />
+      </div>
 
       <div id="support">
         <FAQSection />
