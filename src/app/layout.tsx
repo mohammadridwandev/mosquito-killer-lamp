@@ -35,7 +35,6 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ScrollAnimate>
-          <Navbar />
           {children}
           <Footer />
         </ScrollAnimate>

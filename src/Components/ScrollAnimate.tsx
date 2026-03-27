@@ -15,6 +15,9 @@ export default function ScrollAnimate({
       smoothWheel: true,
     });
 
+    // ✅ make Lenis globally accessible
+    (window as any).lenis = lenis;
+
     function raf(time: any) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -22,7 +25,6 @@ export default function ScrollAnimate({
 
     requestAnimationFrame(raf);
 
-    // ক্লিনআপ
     return () => {
       lenis.destroy();
     };

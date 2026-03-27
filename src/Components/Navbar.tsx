@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState } from "react";
-import { FiMenu, FiX, FiArrowRight } from "react-icons/fi";
+import { FiMenu, FiX } from "react-icons/fi";
 
-const HeroSection = () => {
+export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // মেনু আইটেম এবং তাদের আইডি
   const navLinks = [
     { name: "Home", id: "home" },
     { name: "Features", id: "features" },
@@ -16,105 +14,79 @@ const HeroSection = () => {
     { name: "Support", id: "support" },
   ];
 
-  // Updated: Prevent default anchor jump and perform smooth programmatic scrolling.
-  const handleScroll = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({
-        // Updated here: changed from "auto" to "smooth" to avoid instant jump.
-        behavior: "smooth",
-      });
+  // ✅ Smooth scroll handler using global Lenis instance
+  const handleScroll = (id: string) => {
+    // 👉 using Lenis instance from ScrollAnimate (global)
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(`#${id}`);
+    } else {
+      // fallback (just in case Lenis না থাকে)
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section className="flex flex-col items-center bg-linear-to-b from-[#D9D9FF] to-[#F8F3F9] px-4 py-4 min-h-screen">
-      {/* --- NAVIGATION --- */}
-      <nav className="flex items-center justify-between bg-white/60 rounded-full px-7 md:px-3 py-2.5 w-full max-w-5xl backdrop-blur-md">
-        <a
-          href="#home"
-          onClick={(e) => handleScroll(e, "home")}
-          className="lg:ps-2 font-bold text-xl"
-        >
-          SafeGuard<span className="text-brandBlack">.</span>
-        </a>
+    <div className="relative z-100 flex items-center justify-center">
+      <nav
+        className="flex m-auto fixed items-center mt-18 justify-between bg-white/60 rounded-full px-7 md:px-3 py-2.5 
+        w-[calc(100%-2rem)] md:w-full md:max-w-5xl backdrop-blur-md"
+      >
+        <div className="text-xl font-bold text-gray-900">SafeGuard</div>
 
-        {/* Desktop & Mobile Menu */}
-        <div
-          id="menu"
-          className={`max-md:absolute max-md:bg-slate-100/96 lg:justify-center max-md:h-screen max-md:overflow-hidden max-md:transition-[width] max-md:duration-300 max-md:top-0 max-md:left-0 max-md:flex-col flex items-center lg:pt-0 pt-20 gap-5 z-50 md:gap-10 flex-1 ${
-            mobileOpen ? "max-md:w-full" : "max-md:w-0"
-          }`}
-        >
+        {/* DESKTOP MENU */}
+        <div className="hidden md:flex items-center gap-10 flex-1 justify-center">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.id}
-              href={`#${link.id}`}
-              onClick={(e) => {
-                // Updated: keep using custom handler so every nav click scrolls smoothly.
-                handleScroll(e, link.id);
-                setMobileOpen(false);
-              }}
-              className="text-gray-900 hover:text-gray-800 text-sm font-medium transition-colors"
+              onClick={() => handleScroll(link.id)}
+              className="text-gray-900 hover:text-gray-800 cursor-pointer text-sm font-medium transition-colors"
             >
               {link.name}
-            </a>
+            </button>
+          ))}
+        </div>
+
+        {/* MOBILE MENU */}
+        <div
+          className={`absolute -top-6 left-0 right-0 h-screen w-full bg-slate-100/96 flex flex-col items-center gap-5 pt-16 z-50 transition-all duration-300 ${
+            mobileOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          } md:hidden`}
+        >
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => {
+                handleScroll(link.id); // ✅ smooth scroll
+                setMobileOpen(false); // ✅ close menu
+              }}
+              className="text-gray-800 cursor-pointer text-lg font-medium"
+            >
+              {link.name}
+            </button>
           ))}
 
           <button
             onClick={() => setMobileOpen(false)}
-            className="md:hidden bg-brandBlack cursor-pointer text-white p-3 rounded-full shadow-lg"
+            className="bg-brandBlack text-white cursor-pointer p-3 mt-8 rounded-full"
           >
             <FiX size={24} />
           </button>
         </div>
 
+        {/* RIGHT SIDE */}
         <div className="flex items-center gap-2 md:pr-1">
-          <button className="hidden md:inline-block bg-brandBlack hover:bg-gray-800 cursor-pointer text-white px-6 py-3 rounded-full text-sm font-medium transition shadow-md active:scale-95">
+          <button className="cursor-pointer md:inline-block bg-brandBlack hover:bg-gray-800 text-white px-4 py-2 lg:px-6 lg:py-3 rounded-full text-sm font-medium transition">
             Order Now
           </button>
 
           <button
             onClick={() => setMobileOpen(true)}
-            className="md:hidden text-gray-700 cursor-pointer p-2"
+            className="md:hidden cursor-pointer text-gray-700 p-2"
           >
             <FiMenu size={28} />
           </button>
         </div>
       </nav>
-
-      {/* --- HERO CONTENT --- */}
-      <div id="home" className="flex flex-col py-10">
-        <div className="flex items-center justify-center flex-col text-center">
-          <h1 className="text-2xl lg:text-6xl lg:max-w-4xl mt-8 text-gray-900 leading-[1.1] font-bold tracking-tight">
-            Say Goodbye to Sleepless Nights and Harmful Coils
-          </h1>
-
-          <p className="text-base md:text-lg text-gray-500 max-w-[600px] mt-6 leading-relaxed">
-            Protect your family with SafeGuard’s 360° UV-Trap technology. 100%
-            chemical-free, noise-free, and safe for babies
-          </p>
-
-          <div className="flex gap-4 mt-8">
-            <button className="bg-brandBlack text-white px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-gray-800 transition shadow-lg cursor-pointer shadow-violet-200">
-              Buy Now <FiArrowRight />
-            </button>
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center">
-          <Image
-            src="/hero-section-image/image (2).png"
-            alt="Mosquito Killer Lamp"
-            width={650}
-            height={500}
-            className="mt-12 rounded-3xl object-cover shadow-2xl border-4 border-white"
-          />
-        </div>
-      </div>
-    </section>
+    </div>
   );
-};
-
-export default HeroSection;
+}
