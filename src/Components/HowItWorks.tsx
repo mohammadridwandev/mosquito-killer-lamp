@@ -42,8 +42,8 @@ const HowItWorks = () => {
               />
             </div>
             {/* Floating Badge */}
-            <div className="absolute -bottom-6 -right-6 bg-brandBlack text-white p-8 rounded-3xl hidden md:block shadow-2xl">
-              <p className="text-3xl font-bold">360°</p>
+            <div className="absolute -bottom-6 -right-6 bg-brandBlack text-white p-5 rounded-xl hidden md:block shadow-2xl">
+              <p className="text-2xl font-bold">360°</p>
               <p className="text-xs uppercase tracking-widest opacity-70">
                 Suction Area
               </p>
