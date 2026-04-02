@@ -2,9 +2,12 @@
 
 import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
+import OrderPopup from "./OrderForm";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const [isOpen, setOpen] = React.useState(false);
 
   const navLinks = [
     { name: "Home", id: "home" },
@@ -50,7 +53,7 @@ export default function Navbar() {
 
         {/* MOBILE MENU */}
         <div
-          className={`absolute left-0 top-20 rounded-bl-2xl rounded-br-2xl right-0 w-full bg-slate-100 border border-gray-200 shadow-md flex flex-col items-center gap-5 py-16 z-50 transition-all duration-300 ${
+          className={`absolute left-0 top-20 rounded-xl right-0 w-full bg-brandBlack  shadow-md flex flex-col items-center gap-5 py-16 z-50 transition-all duration-300 ${
             mobileOpen ? "opacity-100 visible" : "opacity-0 invisible"
           } md:hidden`}
         >
@@ -61,7 +64,7 @@ export default function Navbar() {
                 handleScroll(link.id); // ✅ smooth scroll
                 setMobileOpen(false); // ✅ close menu
               }}
-              className="text-gray-800 cursor-pointer text-lg font-medium"
+              className="text-brandWhite cursor-pointer text-lg font-medium"
             >
               {link.name}
             </button>
@@ -69,7 +72,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileOpen(false)}
-            className="bg-brandBlack text-white cursor-pointer p-3 mt-8 rounded-full"
+            className="bg-gray-800 text-brandWhite cursor-pointer p-3 mt-8 rounded-full"
           >
             <FiX size={24} />
           </button>
@@ -77,18 +80,23 @@ export default function Navbar() {
 
         {/* RIGHT SIDE */}
         <div className="flex items-center gap-2 md:pr-1">
-          <button className="cursor-pointer md:inline-block bg-brandBlack hover:bg-gray-800 text-white px-3 py-2 lg:px-6 lg:py-3 rounded-full text-sm font-medium transition">
+          <button
+            onClick={() => setOpen(true)}
+            className="cursor-pointer md:inline-block bg-brandBlack hover:bg-gray-800 text-white px-3 py-2 lg:px-6 lg:py-3 rounded-full text-sm font-medium transition"
+          >
             Order Now
           </button>
 
           <button
             onClick={() => setMobileOpen(true)}
-            className="md:hidden cursor-pointer text-gray-700 p-2"
+            className="md:hidden cursor-pointer text-gray-900 p-2"
           >
             <FiMenu size={28} />
           </button>
         </div>
       </nav>
+
+      <OrderPopup isOpen={isOpen} onClose={() => setOpen(false)}></OrderPopup>
     </div>
   );
 }

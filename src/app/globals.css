@@ -6,7 +6,7 @@ html {
 
 :root {
   --brandBlack: #121212;
-  --brandWhite: #FFFFFF;
+  --brandWhite: #dfdede;
   --softGray: #F5F5F7;
 }
 
@@ -23,13 +23,4 @@ html {
   --color-softGray: var(--softGray);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
-body {
-  color: var(--color-brandBlack);
-}

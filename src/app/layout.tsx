@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import ScrollAnimate from "@/Components/ScrollAnimate";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,12 +32,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased suppressHydrationWarning`}
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased}`}
     >
       <body className="min-h-full flex flex-col">
         <ScrollAnimate>
           {children}
           <Footer />
+          <Toaster />
         </ScrollAnimate>
       </body>
     </html>
